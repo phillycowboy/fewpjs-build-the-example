@@ -1,21 +1,17 @@
 // Defining text characters for the empty and full hearts for you to use later.
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
-// const heart = document.getElementsByClassName('like-glyph');
 // Your JavaScript code goes here!
+// let heart = document.getElementsByClassName('like-glyph')
 document.addEventListener('click', handleClickEvent);
-// document.addEventListener('click', handleSecondClickEvent);
 
 function handleClickEvent(e) {
-  let heart = document.getElementsByClassName('like-glyph');
+  console.log(e)
   e.target.style.color = 'red';
   alert("you liked a post!")
 };
 
-// function handleSecondClickEvent(e) {
-//   let heart = document.getElementsByClassName('like-glyph');
-//    e.target.style.color = 'blue'
-// }
+
 
 
 //------------------------------------------------------------------------------
