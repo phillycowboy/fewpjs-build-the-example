@@ -2,15 +2,57 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 // Your JavaScript code goes here!
-// let heart = document.getElementsByClassName('like-glyph')
-document.addEventListener('click', handleClickEvent);
+// const heart = document.querySelectorAll('#like')
+// heart.addEventListener('click', handleClickEvent);
 
-function handleClickEvent(e) {
-  console.log(e)
-  e.target.style.color = 'red';
-  alert("you liked a post!")
-};
+// function handleClickEvent(e) {
+//   e.target.style.color = "red";
+//   alert('go fuck yourself!')
+// };
+// function addHeartClick() {
+//   const likeHeart = document.querySelectorAll('.like-glyph');
+//   likeHeart.forEach(heart => {
+//     heart.addEventListener('click', toggleHeart)
+//   });
+// }
+document.addEventListener('DOMContentLoaded', function () {
 
+  addHeartClick();
+});
+
+//FUNCTIONS
+function hideErrors() {
+  hidden.classList.add('hidden');
+}
+
+function addHeartClick() {
+  const likeHeart = document.querySelectorAll('.like-glyph');
+  likeHeart.forEach(heart => {
+    heart.addEventListener('click', toggleHeart)
+  });
+}
+
+function toggleHeart(e) {
+  return mimicServerCall()
+    .then(response => response)
+    .then(resp => {
+      let heart = e.target
+      heart.classList.toggle('activated-heart');
+
+      if (e.target.className === 'activated-heart') {
+        heart.innerHTML = FULL_HEART;
+      } else {
+        heart.innerHTML = EMPTY_HEART;
+      }
+
+    })
+    .catch(error => {
+      hidden.classList.toggle('hidden');
+      const message = document.querySelector('#modal-message');
+      message.innerText = error;
+      setTimeout(hideErrors, 5000)
+    });
+}
 
 
 
