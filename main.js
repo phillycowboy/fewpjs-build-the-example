@@ -15,45 +15,66 @@ const FULL_HEART = '♥'
 //     heart.addEventListener('click', toggleHeart)
 //   });
 // }
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 
-  addHeartClick();
-});
+//   addHeartClick();
+// });
 
 //FUNCTIONS
-function hideErrors() {
-  hidden.classList.add('hidden');
-}
+// function hideErrors() {
+//   hidden.classList.add('hidden');
+// }
 
-function addHeartClick() {
-  const likeHeart = document.querySelectorAll('.like-glyph');
-  likeHeart.forEach(heart => {
-    heart.addEventListener('click', toggleHeart)
-  });
-}
+// function addHeartClick() {
+//   const likeHeart = document.querySelectorAll('.like-glyph');
+//   likeHeart.forEach(heart => {
+//     heart.addEventListener('click', toggleHeart)
+//   });
+// }
 
-function toggleHeart(e) {
-  return mimicServerCall()
-    .then(response => response)
-    .then(resp => {
-      let heart = e.target
-      heart.classList.toggle('activated-heart');
+// function toggleHeart(e) {
+//   return mimicServerCall()
+//     .then(response => response)
+//     .then(resp => {
+//       let heart = e.target
+//       heart.classList.toggle('activated-heart');
 
-      if (e.target.className === 'activated-heart') {
-        heart.innerHTML = FULL_HEART;
-      } else {
-        heart.innerHTML = EMPTY_HEART;
+//       if (e.target.className === 'activated-heart') {
+//         heart.innerHTML = FULL_HEART;
+//       } else {
+//         heart.innerHTML = EMPTY_HEART;
+//       }
+
+//     })
+//     .catch(error => {
+//       hidden.classList.toggle('hidden');
+//       const message = document.querySelector('#modal-message');
+//       message.innerText = error;
+//       setTimeout(hideErrors, 5000)
+//     });
+// }
+const heartBtns = document.querySelectorAll('.like-glyph');
+
+// heartBtns.addEventListener('click', () => {
+//   console.log(e.target)
+// })
+function likePost(){
+  heartBtns.forEach(heart => {
+    heart.id = 'like-button';
+    heart.addEventListener('click', (e) => {
+      console.log(e);
+      heart.classList = "activated-heart"
+      if(heart.classList.value === "activated-heart"){
+        heart.classList = "like-glyph";
+      }else if(heart.classList.value === "like-glyph"){
+        heart.classList = "activated-heart";
       }
-
     })
-    .catch(error => {
-      hidden.classList.toggle('hidden');
-      const message = document.querySelector('#modal-message');
-      message.innerText = error;
-      setTimeout(hideErrors, 5000)
-    });
-}
+  });
 
+  }
+likePost();
+  
 
 
 //------------------------------------------------------------------------------
