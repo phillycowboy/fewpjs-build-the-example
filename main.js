@@ -76,6 +76,9 @@ function likePost(){
       }).catch(error => {
         const modal = document.querySelector('#modal');
         modal.className = "";
+        setTimeout(() => {
+          modal.className = "hidden";
+        }, 2000);
       })
     })
   });
