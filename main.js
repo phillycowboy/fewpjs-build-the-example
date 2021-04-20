@@ -53,22 +53,17 @@ const FULL_HEART = '♥'
 //       setTimeout(hideErrors, 5000)
 //     });
 // }
+
+// REFACTORED CODE FROM FEBRUARY --
+// ______________________________________________________________________________
+
 const heartBtns = document.querySelectorAll('.like-glyph');
 
-// heartBtns.addEventListener('click', () => {
-//   console.log(e.target)
-// })
 function likePost(){
   heartBtns.forEach(heart => {
     heart.id = 'like-button';
     heart.addEventListener('click', (e) => {
       console.log(e.target);
-      // heart.classList = "activated-heart"
-      // if(heart.classList.value === "activated-heart"){
-      //   heart.classList = "like-glyph";
-      // }else{
-      //   heart.classList = "activated-heart";
-      // }
       mimicServerCall().then(res => {
         if(heart.innerText === FULL_HEART){
           heart.innerText = EMPTY_HEART;
