@@ -62,13 +62,26 @@ function likePost(){
   heartBtns.forEach(heart => {
     heart.id = 'like-button';
     heart.addEventListener('click', (e) => {
-      console.log(e);
-      heart.classList = "activated-heart"
-      if(heart.classList.value === "activated-heart"){
-        heart.classList = "like-glyph";
-      }else if(heart.classList.value === "like-glyph"){
-        heart.classList = "activated-heart";
-      }
+      console.log(e.target);
+      // heart.classList = "activated-heart"
+      // if(heart.classList.value === "activated-heart"){
+      //   heart.classList = "like-glyph";
+      // }else{
+      //   heart.classList = "activated-heart";
+      // }
+      mimicServerCall().then(res => {
+        if(heart.innerText === FULL_HEART){
+          heart.innerText = EMPTY_HEART;
+          heart.className = "like-glyph";
+          }else{
+            heart.innerText = FULL_HEART;
+            heart.className = "activated-heart";
+          }
+
+      }).catch(error => {
+        const modal = document.querySelector('#modal');
+        modal.className = "";
+      })
     })
   });
 
